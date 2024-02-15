@@ -184,8 +184,8 @@ if __name__ == '__main__':
 
     classifiers_dictionary = {
          'Logistic Regression': sklearn.linear_model.LogisticRegression(random_state = 42),              # Runtime: ~1 Minutes
-         'Decision tree - Unlimited Depth': sklearn.tree.DecisionTreeClassifier(random_state = 42),      # Runtime: ~__ Minutes
-         'Random forest': sklearn.ensemble.RandomForestClassifier(random_state = 42, n_jobs = -1),       # Runtime: __ Hours
+        #  'Decision tree - Unlimited Depth': sklearn.tree.DecisionTreeClassifier(random_state = 42),      # Runtime: ~30 Minutes
+        #  'Random forest': sklearn.ensemble.RandomForestClassifier(random_state = 42, n_jobs = -1),       # Runtime: 1.5 Hours
          'XGBoost (Base Model)': xgboost.XGBClassifier(random_state = 42, n_jobs = -1)                   # Runtime: ~1.5 Minutes
                             #   ,'XGBoost with CV': 
                               }
@@ -212,9 +212,10 @@ if __name__ == '__main__':
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
     run_time(start_time)
 
-    print('Fininshed Running File')
+    print('Fininshed Running File') # 2.5 Hours
 
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
