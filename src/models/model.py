@@ -183,10 +183,10 @@ if __name__ == '__main__':
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     classifiers_dictionary = {
-         'Logistic Regression': sklearn.linear_model.LogisticRegression(random_state = 42),              # Runtime: ~2 Minutes
-        #  'Decision tree - Unlimited Depth': sklearn.tree.DecisionTreeClassifier(random_state = 42),    # Runtime: ~32 Minutes
-        #  'Random forest': sklearn.ensemble.RandomForestClassifier(random_state = 42, n_jobs = -1),     # Runtime: 2 Hours
-        #  'XGBoost (Base Model)': xgboost.XGBClassifier(random_state = 42, n_jobs = -1)                   # Runtime: ~20 Minutes
+         'Logistic Regression': sklearn.linear_model.LogisticRegression(random_state = 42),              # Runtime: ~1 Minutes
+         'Decision tree - Unlimited Depth': sklearn.tree.DecisionTreeClassifier(random_state = 42),      # Runtime: ~__ Minutes
+         'Random forest': sklearn.ensemble.RandomForestClassifier(random_state = 42, n_jobs = -1),       # Runtime: __ Hours
+         'XGBoost (Base Model)': xgboost.XGBClassifier(random_state = 42, n_jobs = -1)                   # Runtime: ~1.5 Minutes
                             #   ,'XGBoost with CV': 
                               }
     
@@ -200,16 +200,15 @@ if __name__ == '__main__':
         print('Fininshed Training Model...\n')
         
         fitted_models_and_predictions_dictionary[classifier_name] = models_and_predictions_dictionary
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     print('Assessing Performance...')
     # performances on test set
     test_df_performances, execution_time_performance_test = performance_assessment_model_collection(fitted_models_and_predictions_dictionary, test_df,
-                                                                                                    type_set = 'test', top_k_list = [100])
+                                                                                                    type_set = 'test', top_k_list = [1000])
 
     # performances on training set
-    train_df_performances, execution_time_performance_train = performance_assessment_model_collection(fitted_models_and_predictions_dictionary, train_df,
-                                                                                                      type_set = 'train', top_k_list = [100])
+    train_df_performances, _ = performance_assessment_model_collection(fitted_models_and_predictions_dictionary, train_df,
+                                                                       type_set = 'train', top_k_list = [1000])
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
