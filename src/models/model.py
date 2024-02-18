@@ -9,6 +9,8 @@ import sklearn.tree
 import sklearn.ensemble
 import xgboost
 
+import pickle
+
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -183,11 +185,11 @@ if __name__ == '__main__':
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     classifiers_dictionary = {
-         'Logistic Regression': sklearn.linear_model.LogisticRegression(random_state = 42),              # Runtime: ~1 Minutes
-        #  'Decision tree - Unlimited Depth': sklearn.tree.DecisionTreeClassifier(random_state = 42),      # Runtime: ~30 Minutes
-        #  'Random forest': sklearn.ensemble.RandomForestClassifier(random_state = 42, n_jobs = -1),       # Runtime: 1.5 Hours
-         'XGBoost (Base Model)': xgboost.XGBClassifier(random_state = 42, n_jobs = -1)                   # Runtime: ~1.5 Minutes
-                            #   ,'XGBoost with CV': 
+         'logistic_regression': sklearn.linear_model.LogisticRegression(random_state = 42),                        # Runtime: ~1 Minutes
+         'decision_tree_depth_2': sklearn.tree.DecisionTreeClassifier(max_depth= 2, random_state = 42),            # Runtime: ~1 Minutes
+        #  'Decision tree - Unlimited Depth': sklearn.tree.DecisionTreeClassifier(random_state = 42),              # Runtime: ~30 Minutes
+        #  'Random forest': sklearn.ensemble.RandomForestClassifier(random_state = 42, n_jobs = -1),               # Runtime: 1.5 Hours
+         'xgboost': xgboost.XGBClassifier(random_state = 42, n_jobs = -1)                                          # Runtime: ~2 Minutes
                               }
     
     fitted_models_and_predictions_dictionary = {}
@@ -201,6 +203,10 @@ if __name__ == '__main__':
         
         fitted_models_and_predictions_dictionary[classifier_name] = models_and_predictions_dictionary
 
+        model_path = "models/"
+        pickle.dump(classifier_name, open(model_path + classifier_name + '.pkl', 'wb'))
+
+
     print('Assessing Performance...')
     # performances on test set
     test_df_performances, execution_time_performance_test = performance_assessment_model_collection(fitted_models_and_predictions_dictionary, test_df,
@@ -209,13 +215,11 @@ if __name__ == '__main__':
     # performances on training set
     train_df_performances, _ = performance_assessment_model_collection(fitted_models_and_predictions_dictionary, train_df,
                                                                        type_set = 'train', top_k_list = [1000])
-
+    
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
     run_time(start_time)
 
     print('Fininshed Running File') # 2.5 Hours
-
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
