@@ -1,6 +1,6 @@
 # Credit Card Fraud Detection
 
-Creating a dataset filled with millions of credit card transactions, and training machine learning models to detect fraudulent credit card transactions.
+Detecting fraudulent credit card transactions using machine learning.
 
 ## Building Dataset
 
