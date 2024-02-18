@@ -14,8 +14,10 @@ st.write("""
          They don't need your physical card, just the details like the number, expiration date, and security code (CCV).
          
          **The web app utilizes machine learning to detect fraudulent credit card transactions based on several criteria:
-         time of the transaction (whether it occured on a weekend, or at nighttime), number of transactions & average amount over a number of days, etc.**
+         time of the transaction (whether it occured on a weekend, or at night time), number of transactions & average amount over a number of days, etc.**
          
          Full code is available on [GitHub.](https://github.com/tiqfds/credit-fraud-detection)
          
          """)
+
+date_range = st.sidebar.text_input("""Choose a date range""")
