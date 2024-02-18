@@ -18,5 +18,4 @@ st.write("""
          
          Full code is available on [GitHub.](https://github.com/tiqfds/credit-fraud-detection)
          
-
-""")
+         """)
