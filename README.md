@@ -4,7 +4,7 @@ Detecting fraudulent credit card transactions using machine learning.
 
 ## Building Dataset
 
-Run `build_dataset.py` & `transform_dataset.py` within `` to build, then transform the dataset.
+Run `build_dataset.py` & `transform_dataset.py` within `src/data/` to build, then transform the dataset.
 
 Finally run `train_test_data.ipynb` to split the data based on time period.
 
